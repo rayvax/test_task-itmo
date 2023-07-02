@@ -1,0 +1,26 @@
+@import './header.variables';
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: $header-height;
+  background: $header-bg;
+  color: $text-alt-color;
+
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .change-lang {
+      margin-left: auto;
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

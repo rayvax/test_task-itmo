@@ -1,0 +1,74 @@
+@import './language-dropdown.variables';
+
+.lang-dropdown {
+  position: relative;
+
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  .current-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button.toggle-dropdown {
+      @include reset-button();
+
+      transition: transform 0.1s linear;
+    }
+  }
+
+  ul.dropdown {
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+
+    list-style: none;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translate(0, 100%);
+
+    color: $text-color;
+    box-shadow: $dropdown-shadow;
+
+    > li {
+      padding: 0.5rem;
+
+      &.current-lang {
+        background-color: $bg2-color;
+      }
+
+      > a {
+        @include reset-anchor();
+      }
+    }
+  }
+
+  .lang-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    .lang-title {
+      width: 1.5rem;
+    }
+  }
+
+  &.open {
+    .current-lang {
+      button.toggle-dropdown {
+        transform: rotateX(180deg);
+      }
+    }
+
+    ul.dropdown {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
