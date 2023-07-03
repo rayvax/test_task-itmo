@@ -27,18 +27,19 @@ export function LanguageDropdown() {
 
   return (
     <div className={`lang-dropdown ${isOpen ? 'open' : 'close'}`}>
-      <div className='current-lang'>
+      <div className='current-lang' onClick={() => setIsOpen((prev) => !prev)}>
         <LanguageItem
           language={languages.get(currentLocale as AppLocale) ?? DefaultLanguageData}
           locale={currentLocale}
         />
-        <button
-          className='toggle-dropdown'
-          type='button'
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          <Image src={ChevronSvg} alt={isOpen ? 'close' : 'open'} width={12} height={12} />
-        </button>
+
+        <Image
+          className='dropdown-chevron'
+          src={ChevronSvg}
+          alt={isOpen ? 'close' : 'open'}
+          width={12}
+          height={12}
+        />
       </div>
       <ul className='dropdown'>
         {Array.from(languages).map(([locale, lang]) => (

@@ -13,9 +13,11 @@
     align-items: center;
     gap: 0.5rem;
 
-    button.toggle-dropdown {
-      @include reset-button();
+    &:hover {
+      cursor: pointer;
+    }
 
+    .dropdown-chevron {
       transition: transform 0.1s linear;
     }
   }
@@ -61,7 +63,7 @@
 
   &.open {
     .current-lang {
-      button.toggle-dropdown {
+      .dropdown-chevron {
         transform: rotateX(180deg);
       }
     }
