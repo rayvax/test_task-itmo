@@ -23,3 +23,7 @@ export function NewsCard({ date, title, imageSrc }: NewsCardProps) {
     </div>
   );
 }
+
+export function NewsCardPlaceholder() {
+  return <div className='news-card placeholder' />;
+}

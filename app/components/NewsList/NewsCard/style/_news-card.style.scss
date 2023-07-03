@@ -15,6 +15,7 @@
 
     border-radius: 1rem 1rem 0 0;
   }
+
   &__main-data {
     padding: 2rem;
 
@@ -26,5 +27,9 @@
       margin: 0 0 1rem;
       padding: 0;
     }
+  }
+
+  &.placeholder {
+    @include loadingAnimation();
   }
 }
