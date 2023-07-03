@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 type NewsCardProps = {
   date: number;
-  content: string;
+  title: string;
   imageSrc: string;
 };
 
-export function NewsCard({ date, content, imageSrc }: NewsCardProps) {
+export function NewsCard({ date, title, imageSrc }: NewsCardProps) {
   return (
     <div className='news-card'>
       <div className='news-card__img'>
@@ -18,7 +18,7 @@ export function NewsCard({ date, content, imageSrc }: NewsCardProps) {
         <h2 className='news-card__main-data__date'>
           <time>{format(date, 'd MMMM yyyy')}</time>
         </h2>
-        <p>{content}</p>
+        <p>{title}</p>
       </div>
     </div>
   );
