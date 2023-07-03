@@ -18,7 +18,7 @@ export function NewsCard({ date, title, imageSrc }: NewsCardProps) {
         <h2 className='news-card__main-data__date'>
           <time>{format(date, 'd MMMM yyyy')}</time>
         </h2>
-        <p>{title}</p>
+        <p className='news-card__main-data__title'>{title}</p>
       </div>
     </div>
   );

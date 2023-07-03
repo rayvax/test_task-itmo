@@ -8,7 +8,7 @@
   column-gap: 2rem;
   row-gap: 2.5rem;
 
-  justify-content: center;
+  align-items: center;
 
   @include table-media() {
     grid-template-columns: repeat(2, 1fr);
