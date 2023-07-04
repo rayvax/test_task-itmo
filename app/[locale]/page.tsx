@@ -1,11 +1,12 @@
-import { NewsList } from '../components/NewsList';
-import { dispatch } from '../store';
-import { fetchNews } from '../store/news/thunk';
-import { useAppLocale } from '../../locale/hooks';
+import { NewsList } from './NewsList';
+import { useTranslations } from 'next-intl';
 
-export default async function Home() {
-  const locale = useAppLocale();
-  await dispatch(fetchNews({ locale }));
-
-  return <NewsList />;
+export default function Home() {
+  const t = useTranslations('News');
+  return (
+    <>
+      <h1>{t('main-title')}</h1>
+      <NewsList />
+    </>
+  );
 }

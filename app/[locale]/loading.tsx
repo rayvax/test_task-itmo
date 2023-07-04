@@ -1,7 +1,14 @@
-import { NewsListPlaceholder } from '../components/NewsList';
+import { useTranslations } from 'next-intl';
+import { NewsListSkeleton } from './NewsList';
 
 function PageLoading() {
-  return <NewsListPlaceholder />;
+  const t = useTranslations('News');
+  return (
+    <>
+      <h1>{t('main-title')}</h1>
+      <NewsListSkeleton />;
+    </>
+  );
 }
 
 export default PageLoading;

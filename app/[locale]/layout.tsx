@@ -1,6 +1,6 @@
 import '../style/global.entry.scss';
 import { Open_Sans } from 'next/font/google';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { AppLocale } from '../../locale/types';
 import { LocaleProvider } from '../../locale/provider';
@@ -21,7 +21,6 @@ export default function RootLayout({
   params: { locale: AppLocale };
 }) {
   const locale = useLocale();
-  const t = useTranslations('News');
 
   // Show a 404 error if the user requests an unknown locale
   if (params.locale !== locale) {
@@ -33,10 +32,7 @@ export default function RootLayout({
       <body className={openSans.className}>
         <LocaleProvider params={params}>
           <Header />
-          <main className='main-content'>
-            <h1>{t('main-title')}</h1>
-            {children}
-          </main>
+          <main className='main-content'>{children}</main>
         </LocaleProvider>
       </body>
     </html>

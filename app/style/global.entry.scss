@@ -1,10 +1,11 @@
 @import './global.variables';
 @import './global.mixins';
 
-@import './page.entry.scss';
+@import '../[locale]/style/home.entry.scss';
+@import '../[locale]/news/[newsId]/style/news-details.entry.scss';
 
 @import '../components/Header/style/header.entry.scss';
 @import '../[locale]/LanguageDropdown/style/language-dropdown.entry.scss';
-@import '../components/NewsList/style/news-list.entry.scss';
+@import '../[locale]/NewsList/style/news-list.entry.scss';
 
 @import './global.style';

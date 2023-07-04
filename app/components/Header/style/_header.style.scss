@@ -10,6 +10,11 @@
   background: $header-bg;
   color: $text-alt-color;
 
+  .main-content {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .content-wrapper {
     display: flex;
     align-items: center;

@@ -1,23 +1,24 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { NewsInfo } from '../../api/news/types';
 import { fetchNews } from './thunk';
-import { NEWS_PER_PAGE } from '../../api/news/constants';
 
 type NewsState = {
-  newsList: (NewsInfo | null)[]; // null -> loading
+  newsList: NewsInfo[];
   error: string | null;
+  isLoading: boolean;
 };
 
 const initialState: NewsState = {
   newsList: [],
   error: null,
+  isLoading: true,
 };
 
 const newsSlice = createSlice({
   name: 'news',
   initialState,
   reducers: {
-    addLoadingNews: (state, { payload }: PayloadAction<{ newsList: NewsInfo[] }>) => {
+    addNewsToList: (state, { payload }: PayloadAction<{ newsList: NewsInfo[] }>) => {
       const { newsList } = payload;
       state.newsList = [...state.newsList, ...newsList];
     },
@@ -25,7 +26,7 @@ const newsSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchNews.pending, (state) => {
-        state.newsList = new Array(NEWS_PER_PAGE).fill(null);
+        state.isLoading = true;
       })
       .addCase(fetchNews.fulfilled, (state, { payload }) => {
         state.newsList = payload;
@@ -35,5 +36,5 @@ const newsSlice = createSlice({
       }),
 });
 
-export const {} = newsSlice.actions;
+export const { addNewsToList } = newsSlice.actions;
 export default newsSlice.reducer;
