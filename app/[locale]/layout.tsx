@@ -5,8 +5,6 @@ import { notFound } from 'next/navigation';
 import { AppLocale } from '../../locale/types';
 import { LocaleProvider } from '../../locale/provider';
 import { Header } from '../components/Header';
-import { dispatch } from '../store';
-import { clearNewsList } from '../store/news/reducer';
 
 const openSans = Open_Sans({ subsets: ['latin', 'cyrillic'] });
 

@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import Image from 'next/image';
 import { NewsInfo } from '../../../api/news/types';
 import Link from 'next-intl/link';

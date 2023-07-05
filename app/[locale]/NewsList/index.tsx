@@ -1,20 +1,8 @@
 import { NewsCard, NewsCardSkeleton } from './NewsCard';
 import { NEWS_PER_PAGE } from '../../api/news/constants';
-import { getNewsList } from '../../store/news/utils';
-import { useAppLocale } from '../../../locale/hooks';
-import { dispatch } from '../../store';
-import { fetchNews } from '../../store/news/thunk';
+import { NewsInfo } from '../../api/news/types';
 
-export async function NewsList() {
-  const locale = useAppLocale();
-  let newsList = getNewsList(locale);
-
-  if (!newsList.length) {
-    const locale = useAppLocale();
-    await dispatch(fetchNews({ locale }));
-    newsList = getNewsList(locale);
-  }
-
+export async function NewsList({ newsList }: { newsList: NewsInfo[] }) {
   return (
     <div className='news-list'>
       {newsList.map((news) => (

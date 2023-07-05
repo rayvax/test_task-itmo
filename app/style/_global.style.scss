@@ -14,6 +14,13 @@ body {
 
   margin: 2.25rem auto;
   padding: 0 2rem;
+
+  @include table-media() {
+    &:not(header *) {
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
 }
 
 p {
