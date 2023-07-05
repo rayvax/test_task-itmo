@@ -2,7 +2,7 @@ import { NewsCard, NewsCardSkeleton } from './NewsCard';
 import { NEWS_PER_PAGE } from '../../api/news/constants';
 import { NewsInfo } from '../../api/news/types';
 
-export async function NewsList({ newsList }: { newsList: NewsInfo[] }) {
+export function NewsList({ newsList }: { newsList: NewsInfo[] }) {
   return (
     <div className='news-list'>
       {newsList.map((news) => (
