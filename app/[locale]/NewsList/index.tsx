@@ -6,12 +6,13 @@ import { dispatch } from '../../store';
 import { fetchNews } from '../../store/news/thunk';
 
 export async function NewsList() {
-  let newsList = getNewsList();
+  const locale = useAppLocale();
+  let newsList = getNewsList(locale);
 
   if (!newsList.length) {
     const locale = useAppLocale();
     await dispatch(fetchNews({ locale }));
-    newsList = getNewsList();
+    newsList = getNewsList(locale);
   }
 
   return (

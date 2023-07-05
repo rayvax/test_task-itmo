@@ -1,15 +1,16 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { NewsInfo } from '../../api/news/types';
 import { fetchNews } from './thunk';
+import { AppLocale } from '../../../locale/types';
 
 type NewsState = {
-  newsList: NewsInfo[];
+  newsLists: { [key in AppLocale]?: NewsInfo[] };
   error: string | null;
   isLoading: boolean;
 };
 
 const initialState: NewsState = {
-  newsList: [],
+  newsLists: {},
   error: null,
   isLoading: true,
 };
@@ -18,9 +19,14 @@ const newsSlice = createSlice({
   name: 'news',
   initialState,
   reducers: {
-    addNewsToList: (state, { payload }: PayloadAction<{ newsList: NewsInfo[] }>) => {
-      const { newsList } = payload;
-      state.newsList = [...state.newsList, ...newsList];
+    addNewsToList: (
+      state,
+      { payload }: PayloadAction<{ locale: AppLocale; newsList: NewsInfo[] }>,
+    ) => {
+      const { newsList, locale } = payload;
+
+      const stateNewsList = state.newsLists[locale] ?? [];
+      state.newsLists[locale] = [...stateNewsList, ...newsList];
     },
   },
   extraReducers: (builder) =>
@@ -29,7 +35,9 @@ const newsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchNews.fulfilled, (state, { payload }) => {
-        state.newsList = payload;
+        const { newsList, locale } = payload;
+
+        state.newsLists[locale] = newsList;
       })
       .addCase(fetchNews.rejected, (state, { payload }) => {
         state.error = String(payload);

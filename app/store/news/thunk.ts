@@ -9,7 +9,7 @@ export const fetchNews = createAsyncThunk(
       const newsResp = await fetch(`http://localhost:3000/api/news?locale=${locale}`);
       const newsList: NewsInfo[] = await newsResp.json();
 
-      return newsList;
+      return { newsList, locale };
     } catch (e) {
       return rejectWithValue(e);
     }

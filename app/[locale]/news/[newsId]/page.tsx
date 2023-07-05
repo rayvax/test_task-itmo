@@ -13,12 +13,12 @@ type NewsDetailsPageProps = {
 };
 
 async function NewsDetailsPage({ params: { newsId } }: NewsDetailsPageProps) {
-  let newsDetails = await getNewsDetails(Number(newsId));
   const locale = useAppLocale();
+  let newsDetails = await getNewsDetails(locale, Number(newsId));
 
   if (newsDetails === undefined) {
     await dispatch(fetchNews({ locale }));
-    newsDetails = await getNewsDetails(Number(newsId));
+    newsDetails = await getNewsDetails(locale, Number(newsId));
   }
 
   if (!newsDetails) return notFound();
