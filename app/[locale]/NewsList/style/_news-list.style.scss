@@ -12,6 +12,8 @@
 
   @include table-media() {
     grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    margin: 0 auto;
   }
 
   @include mobile-media() {
