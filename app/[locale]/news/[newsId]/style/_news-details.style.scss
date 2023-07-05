@@ -29,6 +29,29 @@
     color: $text2-color;
     padding: 0;
   }
+
+  &.not-found {
+    width: fit-content;
+    margin: 2rem auto;
+
+    padding: 2rem 4rem;
+
+    text-align: center;
+
+    h1 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    .home-link {
+      @include reset-anchor();
+
+      color: $primary-color;
+    }
+  }
 }
 
 .skeleton {
